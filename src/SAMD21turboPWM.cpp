@@ -58,7 +58,7 @@ void TurboPWM::setClockDivider(unsigned int GCLKDiv, bool turbo) {
   while (GCLK->STATUS.bit.SYNCBUSY);
 }
 
-int TurboPWM::timer(int timerNumber, unsigned int TCCDiv, unsigned long long int steps, bool fastPWM) {
+int TurboPWM::timer(unsigned int timerNumber, unsigned int TCCDiv, unsigned long long int steps, bool fastPWM) {
   // Check timer number
   if (timerNumber >= timerTableSize) {
     return 0;

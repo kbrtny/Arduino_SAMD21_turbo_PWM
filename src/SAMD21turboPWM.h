@@ -6,7 +6,7 @@
 class TurboPWM {
   public:
     void setClockDivider(unsigned int GCLKDiv, bool turbo);
-    int timer(int timernumber, unsigned int TCCDiv, unsigned long long int steps, bool fastPWM);
+    int timer(unsigned int timernumber, unsigned int TCCDiv, unsigned long long int steps, bool fastPWM);
     int analogWrite(unsigned int pin, unsigned int dutyCycle);
     int enable(unsigned int timerNumber, bool enabled);
     float frequency(unsigned int timerNumber);
@@ -49,33 +49,34 @@ typedef struct {
 static const PinLookup pinTable[] = {
 #if defined (ARDUINO_SAMD_NANO_33_IOT)
 //Table begin
-{-1},
-{-1}, 
-{-1}, 
-{-1},
+{255},
+{255}, 
+{255}, 
+{255},
 { 4, PORTA,  7, 1, &REG_TCC1_CCB1, PORT_PMUX_PMUXO_E},
 { 5, PORTA,  5, 0, &REG_TCC0_CCB1, PORT_PMUX_PMUXO_E},
 { 6, PORTA,  4, 0, &REG_TCC0_CCB0, PORT_PMUX_PMUXE_E},
 { 7, PORTA,  6, 1, &REG_TCC1_CCB0, PORT_PMUX_PMUXE_E},
 { 8, PORTA, 18, 0, &REG_TCC0_CCB2, PORT_PMUX_PMUXE_F},
-{-1}, 
-{-1}, 
+{255}, 
+{255}, 
 {11, PORTA, 16, 2, &REG_TCC2_CCB0, PORT_PMUX_PMUXE_E}, 
 {12, PORTA, 19, 0, &REG_TCC0_CCB3, PORT_PMUX_PMUXO_F},
 {13, PORTA, 17, 2, &REG_TCC2_CCB1, PORT_PMUX_PMUXO_E}
 //Table end
 
 #elif defined (ARDUINO_SAMD_ZERO) || \
-      defined (ARDUINO_SAMD_FEATHER_M0)
+      defined (ARDUINO_SAMD_FEATHER_M0) || \
+      defined (REDBOARD_TURBO)
 //Table begin
-{-1},
-{-1},
-{-1},
+{255},
+{255},
+{255},
 { 3, PORTA,  9, 0, &REG_TCC0_CCB1, PORT_PMUX_PMUXO_E},
 { 4, PORTA,  8, 0, &REG_TCC0_CCB0, PORT_PMUX_PMUXE_E},
-{-1},
-{-1},
-{-1},
+{255},
+{255},
+{255},
 { 8, PORTA,  6, 1, &REG_TCC1_CCB0, PORT_PMUX_PMUXE_E},
 { 9, PORTA,  7, 1, &REG_TCC1_CCB1, PORT_PMUX_PMUXO_E},
 {10, PORTA, 18, 0, &REG_TCC0_CCB2, PORT_PMUX_PMUXE_F},
@@ -94,8 +95,8 @@ static const PinLookup pinTable[] = {
       defined (ARDUINO_SAMD_MKRNB1500) || \
       defined (ARDUINO_SAMD_MKRVIDOR4000)
 //Table begin
-{-1},
-{-1},
+{255},
+{255},
 { 2, PORTA, 10, 1, &REG_TCC1_CCB0, PORT_PMUX_PMUXE_E}, 
 { 3, PORTA, 11, 1, &REG_TCC1_CCB1, PORT_PMUX_PMUXO_E},
 { 4, PORTB, 10, 0, &REG_TCC0_CCB0, PORT_PMUX_PMUXE_F},
